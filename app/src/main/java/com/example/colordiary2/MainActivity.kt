@@ -1,5 +1,6 @@
 package com.example.colordiary2
 
+import android.content.Intent
 import android.graphics.Color
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -7,7 +8,7 @@ import android.view.View
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
-
+    private val REQUEST= 1234
     private lateinit var colorSet : ColorSet
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -28,7 +29,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun enterEditActivity(v: View){
-        //TODO: Switch into editActivity
+        val i = Intent(this, DayEditActivity::class.java)
+        startActivityForResult(i, REQUEST)
 
     }
 
