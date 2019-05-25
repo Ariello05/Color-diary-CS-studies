@@ -67,10 +67,10 @@ class MainActivity : AppCompatActivity() {
         one.insert(Color.parseColor("#FFFFFF"), "Living")
         two.insert(Color.parseColor("#000000"), "Sleep")
         two.insert(Color.parseColor("#FF0000"), "Living")
-
         mu.add(one.name)
         mu.add(two.name)
 
+        edit.putString(getString(R.string.currentColorSet),"Primary")
         edit.putStringSet(getString(R.string.colorPresets), mu)
         edit.apply()
     }

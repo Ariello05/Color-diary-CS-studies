@@ -6,12 +6,15 @@ import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_color.*
 import android.R.layout
 import android.graphics.Color
+import android.support.v7.widget.GridLayoutManager
 import android.widget.Spinner
 import android.widget.ArrayAdapter
 
 
 
 class ColorActivity : AppCompatActivity() {
+
+    lateinit var colorSet:ColorSet
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,8 +27,22 @@ class ColorActivity : AppCompatActivity() {
         val adapter = ArrayAdapter<String>(
             this, android.R.layout.simple_spinner_item, mu.toList()
         )
+
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
         spinnerPresets.adapter = adapter
+
+        var layoutManager = GridLayoutManager(this, 2)
+        listViewColorSet.layoutManager = layoutManager
+
+        colorSet.loadSet(getNameOfSelectedPreset()!!)
+
+        var myAdapter= ColorActivityArrayAdapter(this, colorSet)
+        listViewColorSet.adapter = myAdapter
+        listViewColorSet.addItemDecoration(GridLayoutDecorator(2,50,false))
+
+        listViewColorSet.setHasFixedSize(false)
+
+
     }
 
     fun getNameOfSelectedPreset(): String?{
