@@ -41,6 +41,13 @@ class ColorSet(private val context: Context, var name: String) {
     }
 
     /**
+     * Returns size of the arrayList
+     */
+    fun getSize():Int{
+        return colors.size
+    }
+
+    /**
      * Gets ArrayList of Activity name
      * @return ArrayList<String> of second elem in Arraylist<pair>
      */
@@ -63,11 +70,11 @@ class ColorSet(private val context: Context, var name: String) {
     }
 
     /**
-     *  Sets the pair into array at index
+     *  Updates the pair in array at index
      *  @param index index of array
      *  @param pair new Pair to be inserted
      */
-    fun setPair(index:Int,pair: Pair<Int,String>){
+    fun updatePair(index:Int,pair: Pair<Int,String>){
         colors[index] = pair
     }
 
