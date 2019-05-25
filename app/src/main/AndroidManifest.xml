@@ -18,7 +18,9 @@
                 <category android:name="android.intent.category.LAUNCHER"/>
             </intent-filter>
         </activity>
-        <activity android:name=".DayEditActivity">
+        <activity android:name=".EditDayActivity">
+        </activity>
+        <activity android:name=".DataSearch">
         </activity>
     </application>
 

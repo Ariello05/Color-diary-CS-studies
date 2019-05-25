@@ -16,6 +16,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        /**
+         * Edit day test
+
+        val dummyDate="190525"
+        var dateToEdit=dummyDate
+        val i=Intent(this, EditDayActivity::class.java)
+        i.putExtra("Date",dateToEdit)
+        startActivityForResult(i, REQUEST)
+        */
+
+
         // Example usage of colorSet
         //colorSet = ColorSet(applicationContext)//or this
         //colorSet.insert(Color.parseColor("#000000"), "Sleep")
@@ -94,5 +105,7 @@ class MainActivity : AppCompatActivity() {
         val sp = getSharedPreferences("MainResource", Context.MODE_PRIVATE)
         return sp.getString(getString(R.string.currentColorSet),"")//Loads name of main color set in program
     }
+
+
 
 }

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto" xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                             android:layout_height="match_parent">
+
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+        <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" android:id="@+id/currDateText"
+        android:layout_weight="1"/>
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+    android:layout_weight="10">
+        <GridView
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:id="@+id/list"
+                android:gravity="center"
+        />
+    </LinearLayout>
+        <!--
+        todo w miejsu image view przedstawienie kolorów
+        -->
+    </LinearLayout>
+</android.support.constraint.ConstraintLayout>
