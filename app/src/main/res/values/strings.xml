@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">ColorDiary2</string>
+    <string name="currentColorSet">MainColorSet</string>
+    <string name="colorPresets">ColorPresets</string>
 </resources>

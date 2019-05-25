@@ -5,7 +5,7 @@ import android.util.Log
 import java.lang.Exception
 
 
-class ColorSet(private val context: Context) {
+class ColorSet(private val context: Context, var name: String) {
     private var colors = arrayListOf<Pair<Int,String>>()
 
     /**
@@ -21,14 +21,42 @@ class ColorSet(private val context: Context) {
      * @param setName where to save current set
      */
     fun saveSet(setName:String){
-        LocalPersistence.witeObjectToFile(context,colors,setName)
+        LocalPersistence.writeObjectToFile(context,colors,setName)
+    }
+
+    override fun toString(): String {
+        return name
+    }
+
+    /**
+     * Gets ArrayList of ColorId
+     * @return ArrayList<Int> of first elem in Arraylist<pair>
+     */
+    fun getColorIdArrayList():ArrayList<Int>{
+        val intArray = ArrayList<Int>()
+        for(c: Pair<Int,String> in colors){
+            intArray.add(c.first)
+        }
+        return intArray
+    }
+
+    /**
+     * Gets ArrayList of Activity name
+     * @return ArrayList<String> of second elem in Arraylist<pair>
+     */
+    fun getActivityNameArrayList():ArrayList<String>{
+        val stringArray = ArrayList<String>()
+        for(c: Pair<Int,String> in colors){
+            stringArray.add(c.second)
+        }
+        return stringArray
     }
 
     /**
      *      Gets the pair at index
      *
      *  @param index index of array
-     *  @return pair at index
+     *  @return Pair<Int,String> at index
      */
     fun getPair(index:Int):Pair<Int,String>{
         return colors[index]

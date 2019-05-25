@@ -25,7 +25,7 @@ object LocalPersistence {
      * @param object
      * @param filename
      */
-    fun witeObjectToFile(context: Context, `object`: Any, filename: String) {
+    fun writeObjectToFile(context: Context, `object`: Any, filename: String) {
 
         var objectOut: ObjectOutputStream? = null
         try {
