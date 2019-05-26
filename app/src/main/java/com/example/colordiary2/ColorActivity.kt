@@ -82,16 +82,23 @@ class ColorActivity : AppCompatActivity() {
         super.onActivityResult(requestCode, resultCode, data)
         if(requestCode == 1){
             if(resultCode == Activity.RESULT_OK){
-                colorSet.updatePair(colorSet.indexHelper,Pair(data!!.getIntExtra("color",0),data.getStringExtra("text")))
-                myAdapter.notifyDataSetChanged()
-                colorSet.saveSet()
-            }else if(resultCode == Activity.RESULT_CANCELED){
-                colorSet.delete(colorSet.indexHelper)
-                myAdapter.notifyDataSetChanged()
-                colorSet.saveSet()
+                if(!data!!.getBooleanExtra("remove",false)) {
+                    colorSet.updatePair(
+                        colorSet.indexHelper,
+                        Pair(data!!.getIntExtra("color", 0), data.getStringExtra("text"))
+                    )
+                    myAdapter.notifyDataSetChanged()
+                    colorSet.saveSet()
+
+                } else {
+                    colorSet.delete(colorSet.indexHelper)
+                    myAdapter.notifyDataSetChanged()
+                    colorSet.saveSet()
+                }
             }
         }
     }
+
 
     override fun onStop() {
         val sp = getSharedPreferences("MainResource", Context.MODE_PRIVATE)

@@ -17,6 +17,7 @@ class EditColorActivity : AppCompatActivity() {
 
     fun save(r:Int, g:Int, b:Int, str:String){
         val returnIntent = Intent()
+        returnIntent.putExtra("remove", false)
         returnIntent.putExtra("text", str)
         returnIntent.putExtra("color", Color.rgb(r,g,b))
         setResult(Activity.RESULT_OK,returnIntent)
@@ -26,7 +27,8 @@ class EditColorActivity : AppCompatActivity() {
 
     fun remove(){
         val returnIntent = Intent()
-        setResult(Activity.RESULT_CANCELED,returnIntent)
+        returnIntent.putExtra("remove", true)
+        setResult(Activity.RESULT_OK,returnIntent)
 
         finish()
     }
