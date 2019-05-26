@@ -7,7 +7,7 @@ import java.lang.Exception
 
 
 class ColorSet(private val context: Context, var name: String = "") {
-
+    var indexHelper:Int = 0
     private var colors = arrayListOf<Pair<Int,String>>()
 
     /**
@@ -105,7 +105,7 @@ class ColorSet(private val context: Context, var name: String = "") {
      */
     fun insert(colorID: Int, str: String){
         for(c: Pair<Int,String> in colors){
-            if(c.second == str || c.first == colorID) {
+            if(c.second == str && c.first == colorID) {
                 throw Exception("Duplicate exression in set!")
             }
         }
@@ -125,6 +125,14 @@ class ColorSet(private val context: Context, var name: String = "") {
                 break
             }
         }
+    }
+
+    /**
+     * Deletes pair
+     * @param int index
+     */
+    fun delete(index:Int){
+        colors.removeAt(index)
     }
 
     /**

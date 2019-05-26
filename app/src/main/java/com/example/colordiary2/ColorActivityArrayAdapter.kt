@@ -27,6 +27,16 @@ class ColorActivityArrayAdapter(var context: Context, var colorList: ColorSet) :
     override fun onBindViewHolder(viewHolder: ColorActivityArrayAdapter.ViewHolder, i: Int) {
         viewHolder.color.setBackgroundColor(colorList.getPair(i).first)
         viewHolder.text.text = colorList.getPair(i).second
+
+        viewHolder.color.setOnClickListener {
+            val ac = context as Activity
+            var myIntent = Intent(ac, EditColorActivity::class.java)
+            myIntent.putExtra("text",colorList.getPair(i).second)
+            myIntent.putExtra("color",colorList.getPair(i).first)
+            colorList.indexHelper = i
+            ac.startActivityForResult(myIntent,1)
+        }
+
 /*
         viewHolder.img.setOnTouchListener(object: View.OnTouchListener {
 

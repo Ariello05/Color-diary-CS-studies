@@ -5,23 +5,20 @@ import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
 import kotlinx.android.synthetic.main.activity_color.*
 import android.R.layout
+import android.app.Activity
+import android.content.Intent
 import android.graphics.Color
 import android.support.v7.widget.GridLayoutManager
 import android.view.View
-import android.widget.Spinner
 import android.widget.ArrayAdapter
 import android.widget.AdapterView
 import android.widget.AdapterView.OnItemSelectedListener
 
 
 
-
-
 class ColorActivity : AppCompatActivity() {
-
-
     lateinit var colorSet:ColorSet
-
+    lateinit var myAdapter:ColorActivityArrayAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -32,7 +29,6 @@ class ColorActivity : AppCompatActivity() {
         mu = sp.getStringSet(getString(R.string.colorPresets),HashSet<String>()) as HashSet<String>//Get list of known colorSets
 
         val adapter = ArrayAdapter<String>(
-
             this, layout.simple_spinner_item, mu.toList()
         )
 
@@ -45,7 +41,7 @@ class ColorActivity : AppCompatActivity() {
         colorSet = ColorSet(this)
         //colorSet.loadSet(getNameOfSelectedPreset()!!)
 
-        var myAdapter= ColorActivityArrayAdapter(this, colorSet)
+        myAdapter= ColorActivityArrayAdapter(this, colorSet)
         listViewColorSet.adapter = myAdapter
         listViewColorSet.addItemDecoration(GridLayoutDecorator(2,50,false))
 
@@ -71,7 +67,38 @@ class ColorActivity : AppCompatActivity() {
             }
         }
 
+        addColor.setOnClickListener {
+            colorSet.insert(Color.BLACK,"blank")
+            var myIntent = Intent(this, EditColorActivity::class.java)
+            myIntent.putExtra("text",colorSet.getPair(colorSet.getSize()-1).second)
+            myIntent.putExtra("color",colorSet.getPair(colorSet.getSize()-1).first)
+            colorSet.indexHelper = colorSet.getSize()-1
+            startActivityForResult(myIntent,1)
+        }
+
     }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if(requestCode == 1){
+            if(resultCode == Activity.RESULT_OK){
+                if(!data!!.getBooleanExtra("remove",false)) {
+                    colorSet.updatePair(
+                        colorSet.indexHelper,
+                        Pair(data!!.getIntExtra("color", 0), data.getStringExtra("text"))
+                    )
+                    myAdapter.notifyDataSetChanged()
+                    colorSet.saveSet()
+
+                } else {
+                    colorSet.delete(colorSet.indexHelper)
+                    myAdapter.notifyDataSetChanged()
+                    colorSet.saveSet()
+                }
+            }
+        }
+    }
+
 
     override fun onStop() {
         val sp = getSharedPreferences("MainResource", Context.MODE_PRIVATE)
@@ -80,7 +107,6 @@ class ColorActivity : AppCompatActivity() {
         edit.apply()
 
         super.onStop()
-
     }
 
     fun getNameOfSelectedPreset(): String?{
