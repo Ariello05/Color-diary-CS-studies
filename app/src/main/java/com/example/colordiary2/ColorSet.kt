@@ -7,7 +7,7 @@ import java.lang.Exception
 
 
 class ColorSet(private val context: Context, var name: String = "") {
-
+    var indexHelper:Int = 0
     private var colors = arrayListOf<Pair<Int,String>>()
 
     /**
