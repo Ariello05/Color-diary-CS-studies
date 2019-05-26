@@ -84,6 +84,7 @@ class ColorActivity : AppCompatActivity() {
             if(resultCode == Activity.RESULT_OK){
                 colorSet.updatePair(colorSet.indexHelper,Pair(data!!.getIntExtra("color",0),data.getStringExtra("text")))
                 myAdapter.notifyDataSetChanged()
+                //colorSet.saveSet()
             }
         }
     }
