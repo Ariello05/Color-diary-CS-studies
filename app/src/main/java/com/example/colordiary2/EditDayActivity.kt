@@ -9,7 +9,10 @@ import kotlinx.android.synthetic.main.activity_edit_day.*
 class EditDayActivity : AppCompatActivity(){
     private var dateToEdit:String
     private val hours = Array(48) { HourPlan(0,0) }
-    private val colorSetName=""
+    private var colorSetFileName=""
+    private var dateFileName=""
+
+
     init{
         dateToEdit=""
         for(i in 0..47){
@@ -22,16 +25,23 @@ class EditDayActivity : AppCompatActivity(){
             hours[i].updateStrings()
         }
     }
+    override fun onBackPressed() {
+        super.onBackPressed()
+        finish()
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         dateToEdit=intent.getStringExtra("Date")
+        colorSetFileName=intent.getStringExtra("colorSetFileName")
+        dateFileName=intent.getStringExtra("dateFileName")
+
         setContentView(R.layout.activity_edit_day)
         currDateText.setTextSize(30f)
         currDateText.setBackgroundColor(getColor(R.color.colorPrimary))
         currDateText.text="Editing "+dateToEdit.subSequence(4, 6)+"."+dateToEdit.subSequence(2,4)+"."+dateToEdit.subSequence(0, 2)
         val gridView = findViewById<GridView>(R.id.list)
-        val hourAdapter = HoursAdapter(this, hours, colorSetName)
+        val hourAdapter = HoursAdapter(this, hours, colorSetFileName, dateToEdit, dateFileName)
         gridView.adapter = hourAdapter
 
 

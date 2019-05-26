@@ -11,20 +11,12 @@ import kotlinx.android.synthetic.main.activity_main.*
 class MainActivity : AppCompatActivity() {
     private val REQUEST= 1234
     private lateinit var colorSet : ColorSet
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        /**
-         * Edit day test
 
-        val dummyDate="190525"
-        var dateToEdit=dummyDate
-        val i=Intent(this, EditDayActivity::class.java)
-        i.putExtra("Date",dateToEdit)
-        startActivityForResult(i, REQUEST)
-        */
+
 
 
         // Example usage of colorSet
@@ -43,6 +35,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun enterEditActivity(v: View){
+
+        //edit day test
+
+        /**
+        val dummyDate="190525"
+        var dateToEdit=dummyDate
+        val i=Intent(this, EditDayActivity::class.java)
+        i.putExtra("Date",dateToEdit)
+        i.putExtra("colorSetFileName", "DummyColorSetFIle")
+        i.putExtra("dateFileName", "datefile2")
+        startActivityForResult(i, REQUEST)*/
+
+
         val i = Intent(this, DataSearch::class.java)
         startActivityForResult(i, REQUEST)
 

@@ -1,6 +1,8 @@
 package com.example.colordiary2
 
-class HourPlan(var hour: Int, var minutes: Int) {
+import java.io.Serializable
+
+class HourPlan(var hour: Int, var minutes: Int): Serializable{
      var nameOfActivity: String
      var nameOfColor: String
      var minutesString=""
