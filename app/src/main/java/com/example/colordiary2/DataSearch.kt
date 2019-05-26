@@ -1,5 +1,6 @@
 package com.example.colordiary2
 
+
 import android.content.res.Resources
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
@@ -8,12 +9,14 @@ import android.widget.ListAdapter
 import android.widget.ListView
 import kotlinx.android.synthetic.main.activity_data_search.*
 import java.time.Year
+
 import java.util.*
 
 
 class DataSearch : AppCompatActivity(){
 
     var level = 1
+
     lateinit var yearView: ListView
     lateinit var monthView: ListView
     lateinit var dayView: ListView
@@ -26,6 +29,7 @@ class DataSearch : AppCompatActivity(){
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_data_search)
+
 
         yearView = findViewById<ListView>(R.id.year)
         monthView = findViewById<ListView>(R.id.month)
@@ -74,6 +78,7 @@ class DataSearch : AppCompatActivity(){
     fun goBack(view: View) {
         level++
         updateStatus()
+
     }
 
     fun updateStatus() {
@@ -95,7 +100,9 @@ class DataSearch : AppCompatActivity(){
             yearView.setVisibility(View.GONE)
             monthView.setVisibility(View.GONE)
             dayView.setVisibility(View.VISIBLE)
+
             initDayList()
+
         } else if(level > 3) {
 
             goToDay()

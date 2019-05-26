@@ -8,12 +8,41 @@
         tools:context=".ColorActivity">
 
     <Spinner
-            android:layout_width="395dp"
-            android:layout_height="53dp"
+
+            android:layout_width="325dp"
+            android:layout_height="58dp"
             android:id="@+id/spinnerPresets" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="200dp" app:layout_constraintStart_toStartOf="parent"
-            android:layout_marginStart="8dp" app:layout_constraintEnd_toEndOf="parent" android:layout_marginEnd="8dp"
-            android:layout_marginBottom="691dp" app:layout_constraintBottom_toBottomOf="parent"
-            android:spinnerMode="dropdown" android:background="@color/colorAccent"
-            android:dropDownWidth="match_parent" android:visibility="visible"/>
+            android:layout_marginTop="64dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginStart="8dp"
+            android:spinnerMode="dropdown" android:background="@color/colorPrimary"
+            android:dropDownWidth="match_parent" android:visibility="visible"
+            app:layout_constraintEnd_toStartOf="@+id/addSet"
+    />
+    <Button
+            android:text="+"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:id="@+id/addSet" app:layout_constraintStart_toEndOf="@+id/spinnerPresets"
+            app:layout_constraintEnd_toEndOf="parent" app:layout_constraintTop_toTopOf="parent"
+            android:layout_marginTop="64dp" app:layout_constraintBottom_toTopOf="@+id/spinnerPresets"
+            app:layout_constraintVertical_bias="0.0" android:textStyle="bold" android:textSize="24sp"/>
+    <android.support.v7.widget.RecyclerView
+            android:layout_width="392dp"
+            android:layout_height="513dp"
+            app:layout_constraintStart_toStartOf="parent" android:layout_marginStart="8dp"
+            android:layout_marginTop="8dp" app:layout_constraintTop_toBottomOf="@+id/spinnerPresets"
+            android:layout_marginEnd="8dp" app:layout_constraintEnd_toEndOf="parent"
+            android:id="@+id/listViewColorSet"
+            app:layout_constraintBottom_toTopOf="@+id/addColor"/>
+    <Button
+            android:text="+"
+            android:layout_width="200dp"
+            android:layout_height="50dp"
+            android:id="@+id/addColor"
+            android:textStyle="bold" android:textSize="24sp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintTop_toBottomOf="@+id/listViewColorSet" app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+    />
+
 </android.support.constraint.ConstraintLayout>

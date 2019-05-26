@@ -5,7 +5,9 @@ import android.util.Log
 import java.lang.Exception
 
 
-class ColorSet(private val context: Context, var name: String) {
+
+class ColorSet(private val context: Context, var name: String = "") {
+
     private var colors = arrayListOf<Pair<Int,String>>()
 
     /**
@@ -14,13 +16,15 @@ class ColorSet(private val context: Context, var name: String) {
      */
     fun loadSet(setName:String){
         colors = LocalPersistence.readObjectFromFile(context,setName) as ArrayList<Pair<Int, String>>
+        name = setName
     }
 
     /**
      *  Saves to local files this colorSet
      * @param setName where to save current set
      */
-    fun saveSet(setName:String){
+
+    fun saveSet(setName:String = name){
         LocalPersistence.writeObjectToFile(context,colors,setName)
     }
 
@@ -38,6 +42,14 @@ class ColorSet(private val context: Context, var name: String) {
             intArray.add(c.first)
         }
         return intArray
+    }
+
+    /**
+
+     * Returns size of the arrayList
+     */
+    fun getSize():Int{
+        return colors.size
     }
 
     /**
@@ -63,11 +75,11 @@ class ColorSet(private val context: Context, var name: String) {
     }
 
     /**
-     *  Sets the pair into array at index
+     *  Updates the pair in array at index
      *  @param index index of array
      *  @param pair new Pair to be inserted
      */
-    fun setPair(index:Int,pair: Pair<Int,String>){
+    fun updatePair(index:Int,pair: Pair<Int,String>){
         colors[index] = pair
     }
 

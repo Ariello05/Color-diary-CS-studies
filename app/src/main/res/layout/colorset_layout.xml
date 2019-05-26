@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              android:orientation="horizontal"
+              android:background="#FFFFFF"
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content">
+    <TextView
+            android:text="TextView"
+            android:layout_width="88dp"
+            android:layout_height="wrap_content" android:id="@+id/TextActivityColorSet" android:textSize="18sp"
+            android:textDirection="ltr" android:textAlignment="center"/>
+    <Button
+            android:layout_width="329dp"
+            android:layout_height="wrap_content" android:id="@+id/ButtonColorColorSet" android:layout_weight="1"/>
+</LinearLayout>
