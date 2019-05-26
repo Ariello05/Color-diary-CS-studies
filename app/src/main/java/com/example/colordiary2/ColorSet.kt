@@ -5,7 +5,9 @@ import android.util.Log
 import java.lang.Exception
 
 
+
 class ColorSet(private val context: Context, var name: String = "") {
+
     private var colors = arrayListOf<Pair<Int,String>>()
 
     /**
@@ -21,6 +23,7 @@ class ColorSet(private val context: Context, var name: String = "") {
      *  Saves to local files this colorSet
      * @param setName where to save current set
      */
+
     fun saveSet(setName:String = name){
         LocalPersistence.writeObjectToFile(context,colors,setName)
     }
@@ -42,6 +45,7 @@ class ColorSet(private val context: Context, var name: String = "") {
     }
 
     /**
+
      * Returns size of the arrayList
      */
     fun getSize():Int{

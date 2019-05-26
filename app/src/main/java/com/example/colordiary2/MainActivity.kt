@@ -16,9 +16,6 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
 
-
-
-
         // Example usage of colorSet
         //colorSet = ColorSet(applicationContext)//or this
         //colorSet.insert(Color.parseColor("#000000"), "Sleep")
@@ -29,12 +26,14 @@ class MainActivity : AppCompatActivity() {
         //colorSet.print()
         //ButtonEdit.setBackgroundColor(colorSet.getColor("Sleep"))
         //ButtonEdit.setTextColor(colorSet.getColor("Living"))
+
         if(getNameOfSelectedPreset() == ""){
             definePresets()
         }
     }
 
     fun enterEditActivity(v: View){
+
 
         //edit day test
 
@@ -49,7 +48,8 @@ class MainActivity : AppCompatActivity() {
 
 
         val i = Intent(this, DataSearch::class.java)
-        startActivityForResult(i, REQUEST)
+        startActivity(i)
+
 
     }
 
@@ -73,6 +73,7 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun definePresets() {
+
         val sets :HashSet<String>
         val sp = getSharedPreferences("MainResource", Context.MODE_PRIVATE)
         sets = sp.getStringSet(getString(R.string.colorPresets),HashSet<String>()) as HashSet<String>//Get list of known colorSets
@@ -103,6 +104,7 @@ class MainActivity : AppCompatActivity() {
         else{
             edit.putString(getString(R.string.currentColorSet), sets.elementAt(0))
         }
+
         edit.apply()
     }
 
@@ -110,7 +112,6 @@ class MainActivity : AppCompatActivity() {
         val sp = getSharedPreferences("MainResource", Context.MODE_PRIVATE)
         return sp.getString(getString(R.string.currentColorSet),"")//Loads name of main color set in program
     }
-
 
 
 }

@@ -19,7 +19,9 @@ import android.widget.AdapterView.OnItemSelectedListener
 
 class ColorActivity : AppCompatActivity() {
 
+
     lateinit var colorSet:ColorSet
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -30,6 +32,7 @@ class ColorActivity : AppCompatActivity() {
         mu = sp.getStringSet(getString(R.string.colorPresets),HashSet<String>()) as HashSet<String>//Get list of known colorSets
 
         val adapter = ArrayAdapter<String>(
+
             this, layout.simple_spinner_item, mu.toList()
         )
 
@@ -77,6 +80,7 @@ class ColorActivity : AppCompatActivity() {
         edit.apply()
 
         super.onStop()
+
     }
 
     fun getNameOfSelectedPreset(): String?{
