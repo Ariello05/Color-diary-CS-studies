@@ -12,7 +12,7 @@
             android:layout_width="325dp"
             android:layout_height="58dp"
             android:id="@+id/spinnerPresets" app:layout_constraintTop_toTopOf="parent"
-            android:layout_marginTop="64dp" app:layout_constraintStart_toStartOf="parent"
+            android:layout_marginTop="16dp" app:layout_constraintStart_toStartOf="parent"
             android:layout_marginStart="8dp"
             android:spinnerMode="dropdown" android:background="@color/colorPrimary"
             android:dropDownWidth="match_parent" android:visibility="visible"
