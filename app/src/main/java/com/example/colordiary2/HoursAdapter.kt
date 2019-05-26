@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.*
 import android.content.DialogInterface
+import android.graphics.Color
 import com.google.gson.Gson
 
 
@@ -16,14 +17,13 @@ class HoursAdapter (private val context: Context, private var hours: Array<HourP
     var days=ArrayList<Pair<String, Array<HourPlan>>>()
     init{
     loadDayPlan()
-        //todo corect colors and activities
-        colorsets.add(Pair(1, "#000000"))
-        colorsets.add(Pair(2, "#FFFFFF"))
-        colorsets.add(Pair(3, "#FFFFFF"))
+
+        //todo corect activities
 
         activities.add(Pair(1, "sleep"))
         activities.add(Pair(2, "learning"))
         activities.add(Pair(3, "chill"))
+        activities.add(Pair(4, "training"))
     }
 
     private var colors = arrayListOf<Pair<Int,String>>()
@@ -48,7 +48,7 @@ class HoursAdapter (private val context: Context, private var hours: Array<HourP
         TextView.text = hours[position].hourString+":"+hours[position].minutesString+"          "+hours[position].nameOfActivity
        TextView.textSize=30f
        TextView.setOnClickListener {
-           //TODO: corect activities
+
            val activity = Array<String>(activities.size) {""}
            for(i in 0..activity.size-1){
                activity[i]= activities[i].second
@@ -59,7 +59,7 @@ class HoursAdapter (private val context: Context, private var hours: Array<HourP
            builder.setItems(activity, DialogInterface.OnClickListener { dialog, which ->
                hours[position].nameOfActivity=activity[which]
                TextView.text = hours[position].hourString+":"+hours[position].minutesString+"          "+hours[position].nameOfActivity
-
+                TextView.setBackgroundColor(Color.parseColor(findColor(hours[position].nameOfActivity)))
                saveDayPlan()
            })
            builder.show() }
@@ -67,8 +67,25 @@ class HoursAdapter (private val context: Context, private var hours: Array<HourP
 
 
        //todo set corect color
-      // TextView.setBackgroundColor(colors[0].first)
+       TextView.setBackgroundColor(Color.parseColor(findColor(hours[position].nameOfActivity)))
         return TextView
+    }
+    fun findColor(nameofactivity:String):String{
+        var j=0
+        var k=0
+        //todo corect this
+        for (j in 0..activities.size-1){
+        if (activities[j].second==nameofactivity)
+            k=j
+        }
+        var i=0
+        loadSet(colorSetFileName)
+        for (i in 0..colors.size-1){
+            if (colors[i].first==k)
+                return colors[i].second
+        }
+        return colors[0].second
+
     }
 
 
@@ -77,7 +94,14 @@ class HoursAdapter (private val context: Context, private var hours: Array<HourP
      * @param setName name of the set to load
      */
     fun loadSet(setName:String){
-        colors = LocalPersistence.readObjectFromFile(context,setName) as ArrayList<Pair<Int, String>>
+        try{
+        colors = LocalPersistence.readObjectFromFile(context,setName) as ArrayList<Pair<Int, String>>}
+        catch (e: TypeCastException){
+            colors.add(Pair(1, "#049500"))
+            colors.add(Pair(2, "#800099"))
+            colors.add(Pair(3, "#CC0323"))
+            colors.add(Pair(4, "#036300"))
+        }
     }
     fun loadDayPlan(){
 
@@ -85,8 +109,8 @@ class HoursAdapter (private val context: Context, private var hours: Array<HourP
         days=LocalPersistence.readObjectFromFile(context, dateFileName) as ArrayList<Pair<String, Array<HourPlan>>>
         }
         catch (e:TypeCastException){
-                       days.add(Pair(dateToEdit,hours ))
-            e.printStackTrace()
+            days.add(Pair(dateToEdit,hours ))
+            //e.printStackTrace()
         }
 
         hoursOfDay = days[findDay()].second
@@ -102,10 +126,11 @@ class HoursAdapter (private val context: Context, private var hours: Array<HourP
     }
     fun findDay():Int{
         var i=0
-        while(i<days.size && days.get(i).first!=dateToEdit) {
+        while(i<days.size-1 && days.get(i).first!=dateToEdit) {
 
             i++
         }
         return i
     }
+
 }

@@ -37,14 +37,8 @@ class MainActivity : AppCompatActivity() {
 
         //edit day test
 
-        /**
-        val dummyDate="190525"
-        var dateToEdit=dummyDate
-        val i=Intent(this, EditDayActivity::class.java)
-        i.putExtra("Date",dateToEdit)
-        i.putExtra("colorSetFileName", "DummyColorSetFIle")
-        i.putExtra("dateFileName", "datefile2")
-        startActivityForResult(i, REQUEST)*/
+
+
 
 
         val i = Intent(this, DateSearch::class.java)
