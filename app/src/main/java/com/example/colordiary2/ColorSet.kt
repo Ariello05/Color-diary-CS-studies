@@ -105,7 +105,7 @@ class ColorSet(private val context: Context, var name: String = "") {
      */
     fun insert(colorID: Int, str: String){
         for(c: Pair<Int,String> in colors){
-            if(c.second == str || c.first == colorID) {
+            if(c.second == str && c.first == colorID) {
                 throw Exception("Duplicate exression in set!")
             }
         }

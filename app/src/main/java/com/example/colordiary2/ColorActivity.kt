@@ -69,7 +69,7 @@ class ColorActivity : AppCompatActivity() {
 
         addColor.setOnClickListener {
             colorSet.insert(Color.BLACK,"blank")
-            var myIntent = Intent(this, ColorEdit::class.java)
+            var myIntent = Intent(this, EditColorActivity::class.java)
             myIntent.putExtra("text",colorSet.getPair(colorSet.getSize()-1).second)
             myIntent.putExtra("color",colorSet.getPair(colorSet.getSize()-1).first)
             colorSet.indexHelper = colorSet.getSize()-1
