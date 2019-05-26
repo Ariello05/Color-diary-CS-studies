@@ -47,7 +47,7 @@ class MainActivity : AppCompatActivity() {
         startActivityForResult(i, REQUEST)*/
 
 
-        val i = Intent(this, DataSearch::class.java)
+        val i = Intent(this, DateSearch::class.java)
         startActivity(i)
 
 
