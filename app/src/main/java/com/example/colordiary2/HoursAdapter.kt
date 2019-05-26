@@ -66,14 +66,14 @@ class HoursAdapter (private val context: Context, private var hours: Array<HourP
 
 
 
-       //todo set corect color
+
        TextView.setBackgroundColor(Color.parseColor(findColor(hours[position].nameOfActivity)))
         return TextView
     }
     fun findColor(nameofactivity:String):String{
         var j=0
         var k=0
-        //todo corect this
+
         for (j in 0..activities.size-1){
         if (activities[j].second==nameofactivity)
             k=j
