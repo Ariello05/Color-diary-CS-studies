@@ -57,7 +57,6 @@ class HoursAdapter (private val context: Context, private var hours: Array<HourP
            val builder = AlertDialog.Builder(this.context)
            builder.setTitle("Pick acivity")
            builder.setItems(activity, DialogInterface.OnClickListener { dialog, which ->
-               //todo implement
                hours[position].nameOfActivity=activity[which]
                TextView.text = hours[position].hourString+":"+hours[position].minutesString+"          "+hours[position].nameOfActivity
 
