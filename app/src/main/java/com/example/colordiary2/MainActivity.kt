@@ -33,7 +33,7 @@ class MainActivity : AppCompatActivity() {
 
     fun enterEditActivity(v: View){
         val i = Intent(this, DataSearch::class.java)
-        startActivityForResult(i, REQUEST)
+        startActivity(i)
 
     }
 

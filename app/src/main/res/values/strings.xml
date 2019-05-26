@@ -2,4 +2,20 @@
     <string name="app_name">ColorDiary2</string>
     <string name="currentColorSet">MainColorSet</string>
     <string name="colorPresets">ColorPresets</string>
+
+    <string-array name="months">
+        <item>January</item>
+        <item>February</item>
+        <item>March</item>
+        <item>April</item>
+        <item>May</item>
+        <item>June</item>
+        <item>July</item>
+        <item>August</item>
+        <item>September</item>
+        <item>October</item>
+        <item>November</item>
+        <item>December</item>
+    </string-array>
+
 </resources>
