@@ -43,9 +43,10 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun enterEditActivity(v: View){
-        val i = Intent(this, DataSearch::class.java)
-        startActivityForResult(i, REQUEST)
 
+        //edit day test
+        val i = Intent(this, DateSearch::class.java)
+        startActivity(i)
     }
 
     fun enterStatisticsActivity(v: View){

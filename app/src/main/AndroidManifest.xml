@@ -22,7 +22,7 @@
         </activity>
         <activity android:name=".EditDayActivity">
         </activity>
-        <activity android:name=".DataSearch">
+        <activity android:name=".DateSearch">
         </activity>
     </application>
 

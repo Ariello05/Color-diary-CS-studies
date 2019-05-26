@@ -9,8 +9,8 @@ import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
 
-class SearchListAdapter (context: Context, var data: ArrayList<String>) :
-    ArrayAdapter<String>(context, R.layout.list_layout, data) {
+class SearchListAdapter (context: Context, var number: ArrayList<String>, var data: ArrayList<String>) :
+    ArrayAdapter<String>(context, R.layout.list_layout, number) {
 
     // ViewHolder!!
 
@@ -24,7 +24,9 @@ class SearchListAdapter (context: Context, var data: ArrayList<String>) :
             view = inflater.inflate(R.layout.list_layout, parent, false)
         }
 
-        view!!.findViewById<TextView>(R.id.textView).text = data[position]
+        var text = data[position] + number[position]
+
+        view!!.findViewById<TextView>(R.id.textView).text = text
 
         return view!!
     }

@@ -24,8 +24,6 @@
                 android:gravity="center"
         />
     </LinearLayout>
-        <!--
-        todo w miejsu image view przedstawienie kolorów
-        -->
+
     </LinearLayout>
 </android.support.constraint.ConstraintLayout>
