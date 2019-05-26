@@ -15,11 +15,18 @@ class EditColorActivity : AppCompatActivity() {
         setContentView(R.layout.activity_edit_color)
     }
 
-    fun end(r:Int, g:Int, b:Int, str:String){
+    fun save(r:Int, g:Int, b:Int, str:String){
         val returnIntent = Intent()
         returnIntent.putExtra("text", str)
         returnIntent.putExtra("color", Color.rgb(r,g,b))
         setResult(Activity.RESULT_OK,returnIntent)
+
+        finish()
+    }
+
+    fun remove(){
+        val returnIntent = Intent()
+        setResult(Activity.RESULT_CANCELED,returnIntent)
 
         finish()
     }

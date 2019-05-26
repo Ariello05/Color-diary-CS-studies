@@ -36,6 +36,7 @@ class ColorActivityArrayAdapter(var context: Context, var colorList: ColorSet) :
             colorList.indexHelper = i
             ac.startActivityForResult(myIntent,1)
         }
+
 /*
         viewHolder.img.setOnTouchListener(object: View.OnTouchListener {
 

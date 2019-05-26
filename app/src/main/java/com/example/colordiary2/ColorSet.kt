@@ -128,6 +128,14 @@ class ColorSet(private val context: Context, var name: String = "") {
     }
 
     /**
+     * Deletes pair
+     * @param int index
+     */
+    fun delete(index:Int){
+        colors.removeAt(index)
+    }
+
+    /**
      * Prints color
      */
     fun print(){

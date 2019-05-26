@@ -73,7 +73,12 @@ class ColorEdit : Fragment() {
         }
         buttonApply.setOnClickListener {
             val ac = getActivity() as EditColorActivity
-            ac.end(seekR,seekG,seekB,editText.text.toString())
+            ac.save(seekR,seekG,seekB,editText.text.toString())
+        }
+
+        buttonRemove.setOnClickListener {
+            val ac = getActivity() as EditColorActivity
+            ac.remove()
         }
 
         switchRed.setOnSeekBarChangeListener(onSeekBarChangeListener)
