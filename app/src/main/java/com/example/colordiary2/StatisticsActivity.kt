@@ -107,14 +107,14 @@ class StatisticsActivity : AppCompatActivity(){
 
     fun updateView() {
 
-        allHours.text = sum.toString()
+        allHours.text = sum.toString().replace(" ","")
         aktywnosc.text = aktywnosci[pointer] + ": "
 
-        var prc: Float = amount[pointer].toFloat()/sum.toFloat()*100
-
-        percentage.text = prc.toString()
+        var prc: Float = amount[pointer].toFloat()/sum.toFloat()*100.0f
 
 
+        val str = prc.toInt().toString() + "%"
+        percentage.text = str
     }
 
     fun getNameOfSelectedPreset(): String?{

@@ -3,7 +3,6 @@
     <string name="currentColorSet">MainColorSet</string>
     <string name="colorPresets">ColorPresets</string>
 
-
     <string-array name="months">
         <item>January</item>
         <item>February</item>

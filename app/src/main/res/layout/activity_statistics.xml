@@ -31,7 +31,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content" android:id="@+id/percentage" android:textSize="36sp"
                     android:maxLines="1"
-                    android:maxLength="5" />
+                    android:maxLength="10"/>
         </TableRow>
     </TableLayout>
     <ListView
