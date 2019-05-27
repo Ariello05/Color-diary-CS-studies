@@ -115,8 +115,17 @@ class HoursAdapter (private val context: Context, private var hours: Array<HourP
 
         var ar = ArrayList<String>()
         try{
+            var dup = false
             ar = LocalPersistence.readObjectFromFile(context,"VisitedDates") as ArrayList<String>
-            ar.add(dateFileName)
+            ar.forEach {
+                if(it == dateFileName){
+                    dup = true
+                }
+            }
+
+            if(!dup)
+                ar.add(dateFileName)
+
         }
         catch(e:TypeCastException){
             ar.add(dateFileName)
