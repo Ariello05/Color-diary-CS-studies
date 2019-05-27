@@ -51,7 +51,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     fun enterStatisticsActivity(v: View){
-        //TODO: Switch into statisticsActivity
+        val i = Intent( this, StatisticsActivity::class.java)
+        startActivity(i)
     }
 
     fun enterColorsActivity(v: View){
