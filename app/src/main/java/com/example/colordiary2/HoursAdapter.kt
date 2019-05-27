@@ -113,6 +113,14 @@ class HoursAdapter (private val context: Context, private var hours: Array<HourP
             //e.printStackTrace()
         }
 
+        hoursOfDay = days[findDay()].second
+        hours=hoursOfDay
+        System.out.println(days[findDay()].second[0].nameOfActivity)
+
+    }
+
+    fun saveDayPlan(){
+
         var ar = ArrayList<String>()
         try{
             var dup = false
@@ -132,14 +140,6 @@ class HoursAdapter (private val context: Context, private var hours: Array<HourP
         }
 
         LocalPersistence.writeObjectToFile(context,ar,"VisitedDates")
-
-        hoursOfDay = days[findDay()].second
-        hours=hoursOfDay
-        System.out.println(days[findDay()].second[0].nameOfActivity)
-
-    }
-
-    fun saveDayPlan(){
         hoursOfDay=hours
         days.set(findDay(), Pair(dateToEdit, hoursOfDay))
         LocalPersistence.writeObjectToFile(context, days, dateFileName)
