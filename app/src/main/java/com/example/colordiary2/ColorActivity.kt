@@ -35,7 +35,7 @@ class ColorActivity : AppCompatActivity() {
         adapter.setDropDownViewResource(layout.simple_spinner_dropdown_item)
         spinnerPresets.adapter = adapter
 
-        val layoutManager = GridLayoutManager(this, 2)
+        val layoutManager = GridLayoutManager(this, 1)
         listViewColorSet.layoutManager = layoutManager
 
         colorSet = ColorSet(this)

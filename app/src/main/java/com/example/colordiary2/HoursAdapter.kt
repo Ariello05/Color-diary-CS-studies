@@ -8,6 +8,7 @@ import android.widget.*
 import android.content.DialogInterface
 import android.graphics.Color
 import com.google.gson.Gson
+import org.w3c.dom.Text
 import java.lang.IllegalArgumentException
 
 
@@ -41,11 +42,10 @@ class HoursAdapter (private val context: Context, private var hours: Array<HourP
     }
 
    override fun getView(position: Int, convertView: View?, parent: ViewGroup?): View {
-
-
-        val TextView = TextView(context)
-        TextView.text = hours[position].hourString+":"+hours[position].minutesString+"          "+hours[position].nameOfActivity
+       val TextView = TextView(context)
+       TextView.text = hours[position].hourString+":"+hours[position].minutesString+"          "+hours[position].nameOfActivity
        TextView.textSize=30f
+
        TextView.setOnClickListener {
 
            val activity = Array<String>(activities.size) {""}
@@ -58,8 +58,20 @@ class HoursAdapter (private val context: Context, private var hours: Array<HourP
            builder.setItems(activity, DialogInterface.OnClickListener { dialog, which ->
                hours[position].nameOfActivity=activity[which]
                TextView.text = hours[position].hourString+":"+hours[position].minutesString+"          "+hours[position].nameOfActivity
-            try {
-            TextView.setBackgroundColor(findColor(hours[position].nameOfActivity))
+
+               try {
+                   val colorID = findColor(hours[position].nameOfActivity)
+                   val channelRed = Color.red(colorID)
+                   val channelGreen = Color.green(colorID)
+                   val channelBlue = Color.blue(colorID)
+
+                   if(channelRed < 60 && channelGreen < 60 && channelBlue < 60)
+                   {
+                       TextView.setTextColor(Color.parseColor("#FFFFFF"))
+                   }else if(channelRed > 195 && channelGreen > 195 && channelBlue > 195){
+                       TextView.setTextColor(Color.parseColor("#000000"))
+                   }
+                   TextView.setBackgroundColor(colorID)
                 }
             catch (e:IllegalArgumentException){
                 System.out.println("Error "+findColor((hours[position].nameOfActivity)))
@@ -69,16 +81,24 @@ class HoursAdapter (private val context: Context, private var hours: Array<HourP
            })
            builder.show() }
 
+       try {
+           val colorID = findColor(hours[position].nameOfActivity)
+           val channelRed = Color.red(colorID)
+           val channelGreen = Color.green(colorID)
+           val channelBlue = Color.blue(colorID)
 
-        try {
-
-
-            TextView.setBackgroundColor(findColor(hours[position].nameOfActivity))
-        }catch (e :IllegalArgumentException){
+           if(channelRed < 60 && channelGreen < 60 && channelBlue < 60)
+           {
+               TextView.setTextColor(Color.parseColor("#FFFFFF"))
+           }else if(channelRed > 195 && channelGreen > 195 && channelBlue > 195){
+               TextView.setTextColor(Color.parseColor("#000000"))
+           }
+           TextView.setBackgroundColor(colorID)
+       }catch (e :IllegalArgumentException){
            // e.printStackTrace()
             System.out.println("Error happend")
             System.out.println(findColor(hours[position].nameOfActivity))
-        }
+       }
             return TextView
     }
     fun findColor(nameofactivity:String):Int{

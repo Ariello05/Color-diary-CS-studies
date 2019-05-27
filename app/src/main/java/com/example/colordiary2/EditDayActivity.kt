@@ -1,5 +1,6 @@
 package com.example.colordiary2
 
+import android.graphics.Color
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.widget.GridView
@@ -38,7 +39,7 @@ class EditDayActivity : AppCompatActivity(){
 
         setContentView(R.layout.activity_edit_day)
         currDateText.setTextSize(30f)
-        currDateText.setBackgroundColor(getColor(R.color.colorPrimary))
+        currDateText.setBackgroundColor(Color.parseColor("#008577"))
         currDateText.text="Editing "+dateToEdit.subSequence(4, 6)+"."+dateToEdit.subSequence(2,4)+"."+dateToEdit.subSequence(0, 2)
         val gridView = findViewById<GridView>(R.id.list)
         val hourAdapter = HoursAdapter(this, hours, colorSetFileName, dateToEdit, dateFileName)
