@@ -24,6 +24,8 @@
         </activity>
         <activity android:name=".DateSearch">
         </activity>
+        <activity android:name=".StatisticsActivity">
+        </activity>
     </application>
 
 </manifest>

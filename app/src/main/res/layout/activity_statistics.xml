@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+                                             xmlns:app="http://schemas.android.com/apk/res-auto"
+                                             xmlns:tools="http://schemas.android.com/tools" android:layout_width="match_parent"
+                                             android:layout_height="match_parent">
+
+    <TableLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" android:id="@+id/tableLayout"
+            app:layout_constraintTop_toTopOf="parent" app:layout_constraintBottom_toTopOf="@+id/activityList">
+
+        <TableRow android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView
+                    android:text="ALL:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/textView" android:textSize="36sp"/>
+            <TextView
+                    android:text="n"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/allHours" android:textSize="36sp"/>
+        </TableRow>
+        <TableRow android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <TextView
+                    android:text="Idle:"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/aktywnosc" android:textSize="36sp"/>
+            <TextView
+                    android:text="%"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" android:id="@+id/percentage" android:textSize="36sp"
+                    android:maxLines="1"
+                    android:maxLength="5" />
+        </TableRow>
+    </TableLayout>
+    <ListView
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintStart_toStartOf="parent" app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tableLayout" tools:visibility="visible"
+            android:id="@+id/activityList"/>
+</android.support.constraint.ConstraintLayout>

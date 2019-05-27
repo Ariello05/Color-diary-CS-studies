@@ -157,15 +157,14 @@ class DateSearch : AppCompatActivity(){
             initDayList()
 
         } else if(level > 3) {
-
             goToDay()
+            level --
         }
 
     }
 
     fun backToLobby() {
-        val i = Intent(this, MainActivity::class.java)
-        startActivity(i)
+        finish()
     }
 
     fun goToDay() {
