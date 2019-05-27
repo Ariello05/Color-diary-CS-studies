@@ -46,6 +46,7 @@ class MainActivity : AppCompatActivity() {
 
         //edit day test
         val i = Intent(this, DateSearch::class.java)
+        i.putExtra("setFileName", getNameOfSelectedPreset() )
         startActivity(i)
     }
 

@@ -8,25 +8,23 @@ import android.widget.*
 import android.content.DialogInterface
 import android.graphics.Color
 import com.google.gson.Gson
+import java.lang.IllegalArgumentException
 
 
 class HoursAdapter (private val context: Context, private var hours: Array<HourPlan>, private val colorSetFileName: String, private val dateToEdit: String, private val dateFileName:String) : BaseAdapter() {
-    var colorsets=ArrayList<Pair<Int, String>>()
     var activities=ArrayList<Pair<Int, String>>()
     var hoursOfDay=Array<HourPlan>(48){HourPlan(0,0)}
     var days=ArrayList<Pair<String, Array<HourPlan>>>()
+    private var colors = arrayListOf<Pair<Int,String>>()
     init{
-    loadDayPlan()
-
-        //todo corect activities
-
-        activities.add(Pair(1, "sleep"))
-        activities.add(Pair(2, "learning"))
-        activities.add(Pair(3, "chill"))
-        activities.add(Pair(4, "training"))
+        loadSet(colorSetFileName)
+        loadDayPlan()
+        for(i in 0..colors.size-1){
+            activities.add(Pair(i, colors[i].second))
+        }
     }
 
-    private var colors = arrayListOf<Pair<Int,String>>()
+
     override fun getCount(): Int {
         return hours.size
     }
@@ -59,33 +57,37 @@ class HoursAdapter (private val context: Context, private var hours: Array<HourP
            builder.setItems(activity, DialogInterface.OnClickListener { dialog, which ->
                hours[position].nameOfActivity=activity[which]
                TextView.text = hours[position].hourString+":"+hours[position].minutesString+"          "+hours[position].nameOfActivity
-                TextView.setBackgroundColor(Color.parseColor(findColor(hours[position].nameOfActivity)))
+            try {
+            TextView.setBackgroundColor(findColor(hours[position].nameOfActivity))
+                }
+            catch (e:IllegalArgumentException){
+                System.out.println("Error "+findColor((hours[position].nameOfActivity)))
+            }
+
                saveDayPlan()
            })
            builder.show() }
 
 
 
+        try {
 
-       TextView.setBackgroundColor(Color.parseColor(findColor(hours[position].nameOfActivity)))
-        return TextView
-    }
-    fun findColor(nameofactivity:String):String{
-        var j=0
-        var k=0
 
-        for (j in 0..activities.size-1){
-        if (activities[j].second==nameofactivity)
-            k=j
+            TextView.setBackgroundColor(findColor(hours[position].nameOfActivity))
+        }catch (e :IllegalArgumentException){
+           // e.printStackTrace()
+            System.out.println("Error happend")
+            System.out.println(findColor(hours[position].nameOfActivity))
         }
-        var i=0
+            return TextView
+    }
+    fun findColor(nameofactivity:String):Int{
         loadSet(colorSetFileName)
         for (i in 0..colors.size-1){
-            if (colors[i].first==k)
-                return colors[i].second
+            if (colors[i].second==nameofactivity)
+                return colors[i].first
         }
-        return colors[0].second
-
+        return colors[0].first
     }
 
 
@@ -97,10 +99,7 @@ class HoursAdapter (private val context: Context, private var hours: Array<HourP
         try{
         colors = LocalPersistence.readObjectFromFile(context,setName) as ArrayList<Pair<Int, String>>}
         catch (e: TypeCastException){
-            colors.add(Pair(1, "#049500"))
-            colors.add(Pair(2, "#800099"))
-            colors.add(Pair(3, "#CC0323"))
-            colors.add(Pair(4, "#036300"))
+        e.printStackTrace()
         }
     }
     fun loadDayPlan(){

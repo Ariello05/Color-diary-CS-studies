@@ -169,12 +169,11 @@ class DateSearch : AppCompatActivity(){
     }
 
     fun goToDay() {
-        val dummyDate="190525"
-       // var dateToEdit=dummyDate
+
         var dateToEdit=goToY+goToM+goToD
         val i=Intent(this, EditDayActivity::class.java)
         i.putExtra("Date",dateToEdit)
-        i.putExtra("colorSetFileName", "DumyColorSetFIle")
+        i.putExtra("colorSetFileName", intent.getStringExtra("setFileName"))
         i.putExtra("dateFileName", dateToEdit)
         startActivityForResult(i, 1234)
     }
