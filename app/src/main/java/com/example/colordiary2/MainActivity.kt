@@ -105,6 +105,4 @@ class MainActivity : AppCompatActivity() {
         return sp.getString(getString(R.string.currentColorSet),"")//Loads name of main color set in program
     }
 
-
-
 }

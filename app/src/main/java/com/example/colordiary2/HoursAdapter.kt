@@ -16,6 +16,7 @@ class HoursAdapter (private val context: Context, private var hours: Array<HourP
     var hoursOfDay=Array<HourPlan>(48){HourPlan(0,0)}
     var days=ArrayList<Pair<String, Array<HourPlan>>>()
     private var colors = arrayListOf<Pair<Int,String>>()
+
     init{
         loadSet(colorSetFileName)
         loadDayPlan()
@@ -69,7 +70,6 @@ class HoursAdapter (private val context: Context, private var hours: Array<HourP
            builder.show() }
 
 
-
         try {
 
 
@@ -102,6 +102,7 @@ class HoursAdapter (private val context: Context, private var hours: Array<HourP
         e.printStackTrace()
         }
     }
+
     fun loadDayPlan(){
 
         try{
@@ -111,6 +112,17 @@ class HoursAdapter (private val context: Context, private var hours: Array<HourP
             days.add(Pair(dateToEdit,hours ))
             //e.printStackTrace()
         }
+
+        var ar = ArrayList<String>()
+        try{
+            ar = LocalPersistence.readObjectFromFile(context,"VisitedDates") as ArrayList<String>
+            ar.add(dateFileName)
+        }
+        catch(e:TypeCastException){
+            ar.add(dateFileName)
+        }
+
+        LocalPersistence.writeObjectToFile(context,ar,"VisitedDates")
 
         hoursOfDay = days[findDay()].second
         hours=hoursOfDay

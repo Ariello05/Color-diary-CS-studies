@@ -43,7 +43,7 @@ class ColorActivity : AppCompatActivity() {
 
         myAdapter= ColorActivityArrayAdapter(this, colorSet)
         listViewColorSet.adapter = myAdapter
-        listViewColorSet.addItemDecoration(GridLayoutDecorator(2,50,false))
+        listViewColorSet.addItemDecoration(GridLayoutDecorator(1,50,false))
 
         listViewColorSet.setHasFixedSize(false)
 
