@@ -6,10 +6,10 @@
               android:layout_height="wrap_content">
     <TextView
             android:text="TextView"
-            android:layout_width="88dp"
-            android:layout_height="wrap_content" android:id="@+id/TextActivityColorSet" android:textSize="18sp"
-            android:textDirection="ltr" android:textAlignment="center"/>
+            android:layout_width="100dp"
+            android:layout_height="match_parent" android:id="@+id/TextActivityColorSet" android:textSize="18sp"
+            android:textDirection="rtl" android:textAlignment="center" android:layout_weight="1"/>
     <Button
-            android:layout_width="329dp"
-            android:layout_height="wrap_content" android:id="@+id/ButtonColorColorSet" android:layout_weight="1"/>
+            android:layout_width="310dp"
+            android:layout_height="match_parent" android:id="@+id/ButtonColorColorSet" android:layout_weight="1"/>
 </LinearLayout>
